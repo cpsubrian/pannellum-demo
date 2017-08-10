@@ -1,0 +1,17 @@
+{
+  "name": "pannellum-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:cpsubrian/pannellum-demo.git",
+  "author": "Brian Link <cpsubrian@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "serve": "static --gzip --host-address localhost --port 3000 ./dist"
+  },
+  "dependencies": {
+    "pannellum": "^2.3.2"
+  },
+  "devDependencies": {
+    "node-static": "^0.7.9"
+  }
+}

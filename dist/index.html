@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6" > <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7" > <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8" > <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9" > <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Content-Language" content="en-us"/>
+  <title>Panoramic Example</title>
+  <link rel="stylesheet" href="https://cdn.pannellum.org/2.3/pannellum.css"/>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      position: relative;
+      width: 100%;
+      height: 0;
+      min-height: 100%;
+    }
+    body {
+      margin: 0;
+      padding: 2%;
+      background: #333;
+    }
+    #panorama {
+      width: 100%;
+      height: 100%;
+    }
+    #controls {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      padding: 10px;
+      z-index: 2;
+    }
+    .ctrl {
+      padding: 8px 5px;
+      width: 30px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.65);
+      color: #fff;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .ctrl:hover {
+        background: rgba(0, 0, 0, 1);
+    }
+  </style>
+</head>
+<body>
+  <div id="panorama">
+    <div id="controls">
+      <div class="ctrl" id="fullscreen">⤢</div>
+    </div>
+  </div>
+  <script type="text/javascript" src="/pannellum/pannellum.js"></script>
+  <script>
+    var viewer = window.pannellum.viewer('panorama', {
+      default: {
+        type: 'equirectangular',
+        autoLoad: true,
+        autoRotate: true,
+        compass: false,
+        showControls: false,
+        firstScene: '1',
+        //hotSpotDebug: true
+      },
+
+      scenes: {
+        1: {
+          panorama: '/images/1.jpg',
+          hotSpots: [
+            {
+              pitch: -5.537046020252039,
+              yaw: 111.98376281148823,
+              type: 'info',
+              text: 'South Africa Trip Photos'
+            },
+            {
+              pitch: -37.01418566655865,
+              yaw: -167.70805022804691,
+              type: 'info',
+              text: 'Puppy Chow'
+            },
+            {
+              pitch: -9.119676299707196,
+              yaw: 16.4701863642097,
+              type: 'info',
+              text: 'Air Fryer'
+            },
+            {
+              pitch: -8.142743558548576,
+              yaw: 161.1718512915591,
+              type: 'scene',
+              text: 'Living Room',
+              sceneId: '2'
+            }
+          ]
+        },
+        2: {
+          panorama: '/images/2.jpg',
+          hotSpots: [
+            {
+              pitch: -11.868666651113362,
+              yaw: -106.61095252245056,
+              type: 'scene',
+              text: 'Kitchen',
+              sceneId: '1'
+            }
+          ]
+        }
+      }
+    });
+
+    document.getElementById('fullscreen').addEventListener('click', function(e) {
+      viewer.toggleFullscreen();
+    });
+  </script>
+</body>
+</html>
